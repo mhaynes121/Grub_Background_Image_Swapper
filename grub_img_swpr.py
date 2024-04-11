@@ -5,7 +5,7 @@
 
     Usage: python grub_background_image_swapper.py Image_Direcotry Grub_Background_Image_File_Name
     
-    Note: Grub_Background_Image_File_Name should match file name specifid in Grub config file.
+    Note: Grub_Background_Image_File_Name should match file name specified in Grub config file.
 """
 import sys
 import os
