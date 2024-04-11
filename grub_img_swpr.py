@@ -31,11 +31,11 @@ def getConfiguration():
         print('\'default.cfg\' file was found. Reading configuration values.')
         for setting in config_file:
             valuePair = setting.split('=')
-            if str('DEFAULT_IMAGE_DIRECTORY') in valuePair: 
-                print('Setting imgDir to: ' + valuePair[1])
+            if str('DEFAULT_IMAGE_DIRECTORY') == valuePair[0]: 
+                print('Setting imgDir to: ' + valuePair[1].strip() + '.')
                 imgDir = valuePair[1]                
-            elif str('DEFAULT_BACKGROUND_IMAGE_FILE_PATH') in valuePair:
-                print('Setting backgroundImgFilePath to: ' + valuePair[1])
+            elif str('DEFAULT_BACKGROUND_IMAGE_FILE_PATH') == valuePair[0]:
+                print('Setting backgroundImgFilePath to: ' + valuePair[1].strip() + '.' )
                 backgroundImgFilePath = valuePair[1]
 
 # Get a random(0-len(files)) file and cp it over to backgroundImageFile.
