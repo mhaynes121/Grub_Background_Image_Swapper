@@ -38,8 +38,8 @@ def getConfiguration():
                 print('Setting backgroundImgFilePath to: ' + valuePair[1].strip() + '.' )
                 backgroundImgFilePath = valuePair[1]
 
-# Get a random(0-len(files)) file and cp it over to backgroundImageFile.
-def main():
+# Move file to it's new location.
+def moveImageFile():
     print('Checking if imgDir exists.')
     if not os.path.exists(imgDir):
         print('Folder not found. Creating it.')
@@ -53,19 +53,28 @@ def main():
         return
 
     i = random.randrange(len(files))
+    while imgDir + files[i] == backgroundImgFilePath:
+        print('Files are the same. Generating new random.')
+        i = random.randrange(len(files))
+    
     print('Copying file, ' + files[i] + ', to bg image.')
     shutil.copyfile(imgDir + files[i], backgroundImgFilePath)
 
-# Set imgDir to first param, backgroundImgFilePath to second param
-if __name__ == '__main__':
+# Get a random(0-len(files)) file and cp it over to backgroundImageFile.
+# params is sys.argv and contains filename[0], imgDir[1], backgroundImgFilePath[2].
+def main(params):
     getConfiguration()
 
-    if len(sys.argv) == 3:
-        print('backgroundImgFilePath and imgDir were  passed in as startup parameters. Bypassing \'default.cfg\' settings.')
-        backgroundImgFilePath = sys.argv[2]
-        imgDir = sys.argv[1]
-    elif len(sys.argv) == 2:
-        print('imgDir was passed in as startup parameter. Bypassing \'default.cfg\' setting.')
-        imgDir = sys.argv[1]
+    # Set imgDir to first param, backgroundImgFilePath to second param
+    if len(params) == 3:
+        print('backgroundImgFilePath and imgDir were passed in as startup parameters. Bypassing \'default.cfg\' settings.')
+        backgroundFilePath = params[2]
+        imgDir = params[1]
+    elif len(params) == 2:
+        print('imgDir was passed in as a startup parameter. Bypassing \'default.cfg\' setting.')
+        imgDir = params[1]
 
-    main()
+    moveImageFile()
+
+if __name__ == '__main__':
+    main(sys.argv)
