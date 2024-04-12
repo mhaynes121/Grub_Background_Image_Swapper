@@ -54,6 +54,9 @@ def moveImageFile():
 
     i = random.randrange(len(files))
     while imgDir + files[i] == backgroundImgFilePath:
+        if len(files) = 1:
+            print('The imgFile and backgroundImgFilePath are the same and are also the only file in the destination folder. Exiting.')
+            return
         print('Files are the same. Generating new random.')
         i = random.randrange(len(files))
     
