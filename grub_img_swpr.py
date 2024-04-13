@@ -16,8 +16,6 @@ import shutil
 imgDir = '/home/shared/images/' 
 # Background image file path
 backgroundImgFilePath = '/home/shared/images/grub-bg.jpg'
-# Settings
-settings = []
 
 # Read the defaults in from the config file if found.
 def getConfiguration():
@@ -54,7 +52,7 @@ def moveImageFile():
 
     i = random.randrange(len(files))
     while imgDir + files[i] == backgroundImgFilePath:
-        if len(files) = 1:
+        if len(files) == 1:
             print('The imgFile and backgroundImgFilePath are the same and are also the only file in the destination folder. Exiting.')
             return
         print('Files are the same. Generating new random.')
