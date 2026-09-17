@@ -36,7 +36,7 @@ def getConfiguration():
                 print('Setting backgroundImgFilePath to: ' + valuePair[1].strip() + '.' )
                 backgroundImgFilePath = valuePair[1]
 
-# Move file to it's new location.
+# Move file to its new location.
 def moveImageFile():
     print('Checking if imgDir exists.')
     if not os.path.exists(imgDir):
